@@ -11,11 +11,12 @@ const Update = () => {
     const [duration,setDuration]=useState('')
     const [totalCost,setTotalCost]=useState('')
     let Navigate=useNavigate()
+     let userId=JSON.parse(localStorage.getItem('userId'))
   
     const AddItiterary=async() =>{
       let result=await fetch(`http://localhost:5000/addItinarary`,{
         method:"post",
-        body:JSON.stringify({from,to,date,name,location,duration,totalCost}),
+        body:JSON.stringify({userId,from,to,date,name,location,duration,totalCost}),
         headers:{
             'Content-Type':'application/json',
             authorization:`bearer ${JSON.parse(localStorage.getItem('token'))}`
